@@ -13,3 +13,5 @@
 		}
 	]
 }
+// Хорошая статья, которая описывает вообще, что здесь есть:
+// https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code
