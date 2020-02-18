@@ -19,8 +19,8 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUsers(w http.ResponseWriter, req *http.Request) {
-	userFirst := User{"Tom", 15}
-	userSecnod := User{"Alex", 25}
+	userFirst := User{Name: "Tom", LastName: "Edison", Age: 15}
+	userSecnod := User{"Alex", "Kramp", 10, &dimension{5, 10}}
 	dataArray := []User{userFirst, userSecnod}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
@@ -29,6 +29,13 @@ func getUsers(w http.ResponseWriter, req *http.Request) {
 
 // User struct
 type User struct {
-	Name string `json:"test"`
-	Age  uint
+	Name     string     `json:"first_name"`
+	LastName string     `json:"last_name,omitempty"`
+	Age      uint       `json:"age,omitempty"`
+	Size     *dimension `json:",omitempty"`
+}
+
+type dimension struct {
+	Height int
+	Width  int
 }
